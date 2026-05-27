@@ -403,6 +403,14 @@ footer {
         display: flex !important; /* บังคับให้แสดงผลในมือถือ */
     }
 
+    .menu-toggle span {
+		width: 100%;
+		height: 3px;
+		background-color: var(--white); /* กำหนดสีขีดเป็นสีขาว */
+		transition: all 0.3s ease;
+		display: block; /* มั่นใจว่า span แสดงผลเป็น block เพื่อให้เห็นความสูง */
+	}
+
     /* 2. จัดระเบียบตัวกล่องเมนู (ดึงไปซ่อนขวาจอก่อน) */
     nav {
         position: fixed;
