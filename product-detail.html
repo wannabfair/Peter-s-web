@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายละเอียดสินค้า | ESO Engineering</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">ESO <span>ENGINEERING</span></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">หน้าแรก</a></li>
+                <li><a href="products.html" class="active">สินค้า</a></li>
+                <li><a href="services.html">บริการ</a></li>
+                <li><a href="about.html">เกี่ยวกับเรา</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="products.html" style="text-decoration: none; color: var(--medium-gray); font-size: 0.9rem;">
+            ← ย้อนกลับไปหน้าสินค้า
+        </a>
+
+        <div id="product-detail-container">
+            <p>กำลังโหลดรายละเอียดสินค้า...</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-bottom">
+            &copy; 2026 ESO Engineering Co., Ltd. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        // เรียกฟังก์ชันสำหรับแสดงข้อมูลรายสินค้าเมื่อเปิดหน้านี้
+        document.addEventListener("DOMContentLoaded", () => {
+            renderSingleProduct();
+        });
+    </script>
+</body>
+</html>
