@@ -390,5 +390,59 @@ footer {
 
 /* Responsive สำหรับหน้ารายละเอียด */
 @media (max-width: 768px) {
-    .detail-wrapper { grid-template-columns: 1fr; padding: 20px; }
+    header {
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    /* 1. เปิดใช้งานปุ่มแฮมเบอร์เกอร์ในมือถือ */
+    .menu-toggle {
+        display: flex !important; /* บังคับให้แสดงผลในมือถือ */
+    }
+
+    /* 2. จัดระเบียบตัวกล่องเมนู (ดึงไปซ่อนขวาจอก่อน) */
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%; /* ซ่อนไว้ทางขวา */
+        width: 70%;
+        height: 100vh;
+        background-color: var(--dark-gray);
+        padding-top: 80px;
+        transition: right 0.4s ease;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+        z-index: 1000;
+    }
+
+    /* 3. ล้างจุดกลมๆ (Bullet) และจัดเรียงเมนูเป็นแนวตั้ง */
+    nav ul {
+        flex-direction: column !important;
+        gap: 0 !important;
+        list-style: none !important;
+        list-style-type: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    nav ul li {
+        width: 100%;
+        list-style: none !important; /* ลบจุดในระดับลิสต์ด้วย */
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 15px 10%;
+        font-size: 1.1rem;
+        color: var(--white);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* 4. เมื่อกดปุ่ม แล้วคลาส active ทำงาน ให้ดันเมนูกลับเข้ามาในจอ */
+    nav.active {
+        right: 0 !important;
+    }
 }
