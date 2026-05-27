@@ -1,0 +1,377 @@
+/* Import ฟอนต์ Prompt จาก Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
+
+:root {
+    --dark-gray: #2b2b2b;       /* สีเทาเข้มหลัก */
+    --medium-gray: #4a4a4a;     /* สีเทารอง */
+    --light-gray: #f5f5f5;      /* พื้นหลังเทาอ่อน */
+    --accent-yellow: #ffcc00;    /* สีเหลืองวิศวกรรม */
+    --white: #ffffff;
+    --text-color: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Prompt', sans-serif;
+}
+
+body {
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* --- Navigation --- */
+header {
+    background-color: var(--dark-gray);
+    padding: 1rem 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--accent-yellow);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: var(--accent-yellow);
+}
+
+/* --- Hero Section --- */
+.hero {
+    background: linear-gradient(135deg, var(--dark-gray) 0%, var(--medium-gray) 100%);
+    padding: 100px 8%;
+    color: var(--white);
+    text-align: left;
+    border-bottom: 5px solid var(--accent-yellow);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.hero h1 span {
+    color: var(--accent-yellow);
+}
+
+.hero p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    background-color: var(--accent-yellow);
+    color: var(--dark-gray);
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.cta-button:hover {
+    background-color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* --- Product Section --- */
+.container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 80%;
+    background-color: var(--accent-yellow);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-color: var(--accent-yellow);
+}
+
+.main-img-container {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.main-img-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.thumb-row {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+.thumb-row img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.thumb-row img:hover {
+    border-color: var(--accent-yellow);
+}
+
+.product-card h3 {
+    font-size: 1.1rem;
+    color: var(--dark-gray);
+    margin-bottom: 10px;
+    height: 50px;
+    overflow: hidden;
+}
+
+.product-info {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--dark-gray);
+    margin: 10px 0;
+}
+
+.price span {
+    font-size: 0.9rem;
+    color: var(--accent-yellow);
+}
+
+.btn-inquire {
+    background-color: var(--dark-gray);
+    color: var(--white);
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin-top: auto;
+    transition: 0.3s;
+}
+
+.btn-inquire:hover {
+    background-color: var(--accent-yellow);
+    color: var(--dark-gray);
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--dark-gray);
+    color: var(--white);
+    padding: 50px 8% 20px;
+    margin-top: 80px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-content h4 {
+    color: var(--accent-yellow);
+    margin-bottom: 20px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+/* --- Category Filter ในหน้า products.html --- */
+.category-nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    background-color: var(--white);
+    color: var(--dark-gray);
+    border: 1px solid var(--dark-gray);
+    padding: 8px 18px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.category-btn:hover, .category-btn.active {
+    background-color: var(--accent-yellow);
+    color: var(--dark-gray);
+    border-color: var(--accent-yellow);
+}
+
+/* --- Layout หน้ารายละเอียดสินค้า product-detail.html --- */
+.detail-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-top: 40px;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.detail-img-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail-main-img {
+    max-width: 100%;
+    height: 350px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.detail-info-area h1 {
+    font-size: 2rem;
+    color: var(--dark-gray);
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.detail-desc {
+    margin: 20px 0;
+    color: #555;
+    white-space: pre-line; /* รองรับการเว้นบรรทัดจาก Google Sheet */
+}
+
+/* --- Product Tags --- */
+.tag-container {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.product-tag {
+    background-color: #eaeaea;
+    color: var(--dark-gray);
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    font-weight: 400;
+}
+
+/* --- Documentation Download Button --- */
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    color: var(--dark-gray);
+    border: 2px solid var(--dark-gray);
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 15px;
+    width: 100%;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+
+.btn-download:hover {
+    background-color: var(--dark-gray);
+    color: var(--accent-yellow);
+}
+
+.btn-download i {
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+/* Responsive สำหรับหน้ารายละเอียด */
+@media (max-width: 768px) {
+    .detail-wrapper { grid-template-columns: 1fr; padding: 20px; }
+}
