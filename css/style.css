@@ -49,8 +49,11 @@ header {
 
 nav ul {
     display: flex;
-    list-style: none;
+    list-style: none; /* ล้างจุดกลมหน้าเมนู */
+    list-style-type: none; /* ย้ำเพื่อความชัวร์ในบางเบราว์เซอร์ */
     gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 nav ul li a {
@@ -63,6 +66,20 @@ nav ul li a {
 
 nav ul li a:hover, nav ul li a.active {
     color: var(--accent-yellow);
+}
+
+/* ปุ่มเปิดปิดเมนูในมือถือ (ซ่อนให้สนิทเมื่ออยู่บนคอมพิวเตอร์) */
+.menu-toggle {
+    display: none; /* ในหน้าจอคอมพิวเตอร์จะถูกซ่อน */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 0; /* ล้างค่า padding ป้องกันปุ่มขยับ */
 }
 
 /* --- Hero Section --- */
