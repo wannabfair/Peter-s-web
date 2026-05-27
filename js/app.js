@@ -1,3 +1,71 @@
+// ฟังก์ชันโหลด Header และ Footer ส่วนกลาง
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. โหลด Header
+    const headerElem = document.getElementById("main-header");
+    if (headerElem) {
+        fetch("header.html")
+            .then(res => res.text())
+            .then(data => {
+                headerElem.innerHTML = data;
+                initMobileMenu(); // เปิดระบบแฮมเบอร์เกอร์หลังจากโหลดเสร็จ
+                highlightActiveMenu(); // ไฮไลต์เมนูหน้าปัจจุบัน
+            });
+    }
+
+    // 2. โหลด Footer
+    const footerElem = document.getElementById("main-footer");
+    if (footerElem) {
+        fetch("footer.html")
+            .then(res => res.text())
+            .then(data => {
+                footerElem.innerHTML = data;
+            });
+    }
+});
+
+// ระบบควบคุมเมนูแฮมเบอร์เกอร์ในมือถือ
+function initMobileMenu() {
+    const menuIcon = document.getElementById("menu-icon");
+    const navMenu = document.getElementById("nav-menu");
+
+    if (menuIcon && navMenu) {
+        menuIcon.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+            menuIcon.classList.toggle("open");
+        });
+    }
+}
+
+// ระบบไฮไลต์เมนูตามหน้าปัจจุบันอัตโนมัติ
+function highlightActiveMenu() {
+    const path = window.location.pathname;
+    const page = path.split("/").pop();
+    
+    // เคลียร์คลาส active เก่าออกก่อน
+    document.querySelectorAll("nav ul li a").forEach(a => a.classList.remove("active"));
+    
+    // ตรวจสอบชื่อไฟล์และเติมคลาส active ให้ถูกหน้า
+    if (page === "index.html" || page === "") {
+        const item = document.getElementById("nav-index");
+        if(item) item.classList.add("active");
+    } else if (page === "products.html") {
+        const item = document.getElementById("nav-products");
+        if(item) item.classList.add("active");
+    } else if (page === "services.html") {
+        const item = document.getElementById("nav-services");
+        if(item) item.classList.add("active");
+    } else if (page === "about.html" || page === "product-detail.html") {
+        // ให้หน้ารายละเอียดสินค้าไฮไลต์ที่เมนูสินค้าด้วย
+        const item = page === "product-detail.html" ? document.getElementById("nav-products") : document.getElementById("nav-about");
+        if(item) item.classList.add("active");
+    }
+}
+
+// ==========================================
+// คัดลอกโค้ดดึงข้อมูล Google Sheet เดิมของคุณมาวางต่อท้ายตรงนี้...
+// ==========================================
+
+
 // โค้ดเชื่อมต่อ Google Apps Script Web App ของคุณ
 const API_URL = "https://script.google.com/macros/s/AKfycbyFu_K3hntib05QfClrE_DiJWxbz8-4u1Mex1vi7he-9DrSU6G0HtPBgYswveeVpHCE/exec"; 
 
