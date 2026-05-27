@@ -304,6 +304,62 @@ footer {
     border-color: var(--accent-yellow);
 }
 
+/* --- แถบควบคุมปุ่มเปลี่ยนหน้า (Pagination) เวอร์ชันโมเดิร์น & Responsive --- */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin: 50px 0 30px 0;
+    width: 100%;
+    flex-wrap: wrap; /* ป้องกันปุ่มทะลุจอในมือถือ โดยจะขึ้นบรรทัดใหม่ให้อัตโนมัติ */
+}
+
+.pagination-container button {
+    background-color: #f5f5f5;; /* ใส่พื้นหลังสีขาวจางๆ เพื่อให้ปุ่มมีมิติ */
+    color: #333333 !important; 
+    border: 1px solid #cccccc;
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+}
+
+/* เอฟเฟกต์ตอนเอาเมาส์ไปชี้ (Hover) */
+.pagination-container button:hover:not(:disabled) {
+    background-color: var(--accent-yellow);
+    border-color: var(--accent-yellow);
+    color: var(--dark-gray) !important; /* สลับสีตัวอักษรเป็นสีมืดให้อ่านง่าย */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 204, 0, 0.2);
+}
+
+/* ปุ่มของหน้าปัจจุบันที่คุณอยู่ (Active) */
+.pagination-container button.active {
+    background-color: var(--accent-yellow);
+    color: var(--dark-gray) !important;
+    border-color: var(--accent-yellow);
+    font-weight: 700;
+    cursor: default;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3);
+}
+
+/* ปุ่มที่กดไม่ได้ เช่น อยู่หน้า 1 แล้วกดปุ่ม [ก่อนหน้า] */
+.pagination-container button:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    border-color: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.3);
+}
+
 /* --- Layout หน้ารายละเอียดสินค้า product-detail.html --- */
 .detail-wrapper {
     display: grid;
@@ -402,8 +458,8 @@ footer {
     .menu-toggle {
         display: flex !important; /* บังคับให้แสดงผลในมือถือ */
     }
-
-    .menu-toggle span {
+	
+	.menu-toggle span {
 		width: 100%;
 		height: 3px;
 		background-color: var(--white); /* กำหนดสีขีดเป็นสีขาว */
@@ -452,5 +508,74 @@ footer {
     /* 4. เมื่อกดปุ่ม แล้วคลาส active ทำงาน ให้ดันเมนูกลับเข้ามาในจอ */
     nav.active {
         right: 0 !important;
+    }
+	
+	/* === ส่วนที่แก้ไขเพิ่มเติม: หน้ารายละเอียดสินค้าสำหรับมือถือ === */
+    
+    .detail-wrapper {
+        grid-template-columns: 1fr !important; /* ปรับจาก 2 คอลัมน์ซ้ายขวา ให้กลายเป็น 1 คอลัมน์เรียงลงมา */
+        gap: 20px !important;
+        padding: 15px !important;
+        margin-top: 15px !important;
+        width: 100% !important;
+        overflow: hidden; /* บล็อกไม่ให้เนื้อหาภายในดันจนล้นการ์ด */
+    }
+
+    .detail-img-area {
+        width: 100% !important;
+    }
+
+    .detail-main-img {
+        width: 100% !important;
+        height: auto !important; /* เปลี่ยนความสูงเป็น Auto เพื่อให้รูปย่อขยายตามสัดส่วนหน้าจอจริง */
+        max-height: 250px !important; /* จำกัดความสูงสูงสุดในมือถือไม่ให้บังหน้าจอเกินไป */
+        object-fit: contain !important;
+    }
+
+    .thumb-row {
+        width: 100% !important;
+        flex-wrap: wrap; /* ถ้ารูปเล็กมีเยอะ (เช่นครบ 5 รูป) ให้ตกบรรทัดลงมาเอง ไม่ดันไปด้านข้าง */
+        justify-content: center;
+    }
+
+    .thumb-row img {
+        width: 50px !important; /* ปรับขนาดรูปเล็กให้จิ้มนิ้วง่ายขึ้นในมือถือ */
+        height: 50px !important;
+    }
+
+    .detail-info-area {
+        width: 100% !important;
+    }
+
+    .detail-info-area h1 {
+        font-size: 1.5rem !important; /* ย่อขนาดชื่อสินค้าลงมาหน่อยเพื่อให้พอดีหน้าจอมือถือ */
+        line-height: 1.4;
+        word-break: break-word; /* สั่งให้ตัดคำอัตโนมัติหากชื่อสินค้ายาวเกินไป */
+    }
+
+    .detail-desc {
+        font-size: 0.9rem !important;
+        word-break: break-word; /* สั่งให้ตัดคำข้อความรายละเอียด ไม่ให้วิ่งทะลุขอบ */
+    }
+
+    /* ปรับแต่งปุ่มในมือถือให้กดง่ายขึ้นเต็มหน้าจอ */
+    .btn-download, .btn-inquire {
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+}
+
+/* === ปรับแต่งพิเศษเมื่อดูในหน้าจอมือถือ === */
+@media (max-width: 500px) {
+    .pagination-container {
+        gap: 4px; /* ลดระยะห่างลงหน่อยเพื่อให้ปุ่มเบียดกันน้อยลง */
+    }
+    
+    .pagination-container button {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        min-width: 35px;
+        height: 35px;
+        border-radius: 6px;
     }
 }
