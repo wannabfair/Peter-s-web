@@ -37,15 +37,38 @@ header {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: 1px;
+    font-size: 1.6rem;
+    font-weight: 800; /* หนาพิเศษสำหรับชื่อ ARTW */
+    letter-spacing: 1.5px;
 }
 
 .logo span {
     color: var(--accent-yellow);
 }
+
+.logo a {
+    color: var(--white);
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+/* เอฟเฟกต์ตอนเอาเมาส์ชี้ที่โลโก้ จะส่องสว่างเบาๆ */
+.logo a:hover {
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+    opacity: 0.95;
+}
+
+/* แต่งคำว่า ENGINEERING ให้ดูซอฟต์ลงแต่แฝงความเท่ */
+.logo .logo-sub {
+    color: var(--accent-yellow);
+    font-weight: 400; /* ตัวบางลงเพื่อสร้างมิติสายตา (Visual Hierarchy) */
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-left: 3px;
+    position: relative;
+}
+
+
 
 nav ul {
     display: flex;
@@ -452,6 +475,15 @@ footer {
         justify-content: space-between;
         align-items: center;
         position: relative;
+    }
+	
+	/* สำหรับมือถือ ย่อขนาดโลโก้ลงนิดนึงไม่ให้เบียดปุ่มสามขีด */
+	.logo {
+        font-size: 1.3rem;
+    }
+    .logo .logo-sub {
+        font-size: 1.0rem;
+        letter-spacing: 1px;
     }
 
     /* 1. เปิดใช้งานปุ่มแฮมเบอร์เกอร์ในมือถือ */
