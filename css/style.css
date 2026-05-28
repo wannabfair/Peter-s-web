@@ -46,14 +46,17 @@ header {
     color: var(--accent-yellow);
 }
 
-.logo a {
-    color: var(--white);
+.logo a, 
+.logo a:visited { /* เพิ่ม :visited เข้าไปเพื่อบล็อกไม่ให้กลายเป็นสีม่วง */
+    color: var(--white) !important; /* บังคับให้เป็นสีขาวเสมอ */
     text-decoration: none;
     transition: 0.3s ease;
 }
 
-/* เอฟเฟกต์ตอนเอาเมาส์ชี้ที่โลโก้ จะส่องสว่างเบาๆ */
-.logo a:hover {
+/* ตอนเอาเมาส์ชี้ หรือจิ้มนิ้วในมือถือ ให้สีเปลี่ยนเป็นสีขาวนวลและเรืองแสงจางๆ */
+.logo a:hover, 
+.logo a:active {
+    color: var(--white) !important;
     text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
     opacity: 0.95;
 }
@@ -479,11 +482,14 @@ footer {
 	
 	/* สำหรับมือถือ ย่อขนาดโลโก้ลงนิดนึงไม่ให้เบียดปุ่มสามขีด */
 	.logo {
-        font-size: 1.3rem;
+        font-size: 1.15rem !important; /* ลดขนาดชื่อหลัก ARTW ลงมาให้พอดีขึ้น */
+        font-weight: 800;
+        white-space: nowrap; /* บังคับไม่ให้ข้อความสลับบรรทัดแบบแปลกๆ */
     }
     .logo .logo-sub {
-        font-size: 1.0rem;
+        font-size: 0.85rem !important; /* ลดขนาด ENGINEERING ให้เล็กลงตามสัดส่วน */
         letter-spacing: 1px;
+        margin-left: 2px;
     }
 
     /* 1. เปิดใช้งานปุ่มแฮมเบอร์เกอร์ในมือถือ */
@@ -609,5 +615,15 @@ footer {
         min-width: 35px;
         height: 35px;
         border-radius: 6px;
+    }
+}
+
+/* เพิ่มเติม: สำหรับมือถือที่หน้าจอแคบมากเป็นพิเศษ (เช่น iPhone SE หรือรุ่นเก่า) */
+@media (max-width: 360px) {
+    .logo {
+        font-size: 1.05rem !important; /* ย่อลงอีกนิดเพื่อให้มั่นใจว่าไม่ล้นจอแน่นอน */
+    }
+    .logo .logo-sub {
+        font-size: 0.75rem !important;
     }
 }
